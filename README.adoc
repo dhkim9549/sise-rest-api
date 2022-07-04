@@ -6,4 +6,4 @@ You will build a service that will accept HTTP GET requests and respond with JSO
 
 See the following guide for reference:
 
-* https://github.com/spring-guides/gs-rest-service [Building a RESTful Web Service]
+* https://github.com/spring-guides/gs-rest-service[Building a RESTful Web Service]
