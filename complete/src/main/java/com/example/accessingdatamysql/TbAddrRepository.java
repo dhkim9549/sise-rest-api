@@ -13,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 public interface TbAddrRepository extends CrudRepository<TbAddr, String> {
 
         @Query(
-                value = "select a.* from tb_addr a where a.lwdg_cd = :lwdgCd and a.sggu_bldg_nm like %:sgguBldgNm%"
+                value = "select a.* from tb_addr a where a.lwdg_cd = :lwdgCd and replace(a.sggu_bldg_nm, ' ', '') like %:sgguBldgNm%"
 			+ " and exists (select 1 from tb_map b where b.stnm_unon_cd = a.stnm_unon_cd) ",
                 nativeQuery = true
         )

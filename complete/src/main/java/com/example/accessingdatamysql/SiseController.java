@@ -45,6 +45,8 @@ public class SiseController {
 		log.info("srchDvcd = " + srchDvcd);
 		log.info("srchVal = " + srchVal);
 
+		srchVal = srchVal.replaceAll(" ", "");
+
 		Iterable<TbAddr> rsltIt = null;
 
 		if(srchDvcd.equals("1")) {
