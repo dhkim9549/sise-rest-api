@@ -1,6 +1,6 @@
 == What You Will Build
 
-You will build a service that will accept HTTP GET requests and respond with JSON representations of sise related data.
+You will build a service that will accept HTTP GET requests, retreive sise related data from MySql, and respond with JSON representations.
 
 == See Also
 
