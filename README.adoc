@@ -1,4 +1,9 @@
 == What You Will Build
 
-You will build a service that will accept HTTP GET requests and respond with a JSON representation of sise related data.
+You will build a service that will accept HTTP GET requests and respond with JSON representations of sise related data.
 
+== See Also
+
+See the following guide for reference:
+
+* https://github.com/spring-guides/gs-rest-service [Building a RESTful Web Service]
