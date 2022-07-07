@@ -2,6 +2,12 @@
 
 You will build a service that will accept HTTP GET requests, retrieve sise related data from MySql, and respond with JSON representations.
 
+== What You Need
+
+Edit spring-boot configuration file:
+
+sise-rest-api/complete/src/main/resources/application.properties
+
 == See Also
 
 See the following guide for reference:
