@@ -8,6 +8,14 @@ Edit spring-boot configuration file:
 
 sise-rest-api/complete/src/main/resources/application.properties
 
+----
+mvn clean package
+----
+
+----
+java -jar accessing-data-mysql-complete-0.0.1-SNAPSHOT.jar
+----
+
 == See Also
 
 See the following guide for reference:
