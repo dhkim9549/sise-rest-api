@@ -1,5 +1,6 @@
 package com.example.accessingdatamysql;
 
+import java.net.InetAddress;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -96,5 +97,23 @@ public class SiseController {
 				String.format("%4s", ltnoBno).replace(' ', '0'),
 				String.format("%4s", ltnoBuno).replace(' ', '0')
 		);
+        }
+
+	@GetMapping(path="/error")
+        public @ResponseBody String error(){
+                return "The page does not exist."; 
+        }
+
+	@GetMapping(path="/healthCheck")
+        public @ResponseBody String getHealthCheck(@RequestParam String pStr){
+		InetAddress local = null;
+		try {
+			local = InetAddress.getLocalHost();
+			String ip = local.getHostAddress();
+			log.info("local ip : " + ip);
+		} catch (Exception e1) {
+			log.error(e1.toString());
+		}
+                return "" + local;
         }
 }
