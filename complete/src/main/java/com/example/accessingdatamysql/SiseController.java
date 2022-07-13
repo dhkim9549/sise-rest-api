@@ -54,11 +54,52 @@ public class SiseController {
 			rsltIt = tbAddrRepository.selectAddrNative(lwdgCd, srchVal);
 		} else if(srchDvcd.equals("2")) {
                         rsltIt = tbAddrRepository.selectAddrNative2(lwdgCd, srchVal);
-		}
+                }
 
 		log.info("getAddrByBdnm() end...");
 
 		return rsltIt;
+
+        }
+
+	@GetMapping(path="/addr1")
+        public @ResponseBody Iterable<TbAddr> getAddr1(@RequestParam String lwdgCd, @RequestParam String bldgNm) {
+
+                log.info("getAddr1() start...");
+                log.info("lwdgCd = " + lwdgCd);
+                log.info("bldgNm = " + bldgNm);
+
+                bldgNm = bldgNm.replaceAll(" ", "");
+
+                Iterable<TbAddr> rsltIt = null;
+
+		rsltIt = tbAddrRepository.selectAddrNative(lwdgCd, bldgNm);
+
+                log.info("getAddr1() end...");
+
+                return rsltIt;
+
+        }
+
+	@GetMapping(path="/addr3")
+        public @ResponseBody Iterable<TbAddr> getAddr3(@RequestParam String lwdgCd, @RequestParam String ltnoBno, @RequestParam String ltnoBuno) {
+
+                log.info("getAddr3() start...");
+                log.info("lwdgCd = " + lwdgCd);
+                log.info("ltnoBno = " + ltnoBno);
+		log.info("ltnoBuno = " + ltnoBuno);
+
+		if(ltnoBuno.trim().equals("")) {
+			ltnoBuno = "0";
+		}
+
+                Iterable<TbAddr> rsltIt = null;
+
+                rsltIt = tbAddrRepository.selectAddrNative3(lwdgCd, ltnoBno, ltnoBuno);
+
+                log.info("getAddr3() end...");
+
+                return rsltIt;
 
         }
 
