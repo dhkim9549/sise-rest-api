@@ -185,6 +185,11 @@ public class SiseController {
                 log.info("bldgBno = " + bldgBno);
                 log.info("bldgBuno = " + bldgBuno);
 
+		stnm = stnm.replaceAll(" ", "");
+                if(bldgBuno.trim().equals("")) {
+                        bldgBuno = "0";
+                }
+
                 Iterable<TbEhpr> it = null;
 
                 it = tbEhprRepository.selectEhprNative2(stnm, bldgBno, bldgBuno);
