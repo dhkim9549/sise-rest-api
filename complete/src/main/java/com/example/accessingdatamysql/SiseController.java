@@ -156,11 +156,22 @@ public class SiseController {
 			@RequestParam("ltnoBno") String ltnoBno, 
 			@RequestParam("ltnoBuno") String ltnoBuno) {
 
-                return tbEhprRepository.selectEhprNative(
+		log.info("getEhpr() start...");
+		log.info("lwdgCd = " + lwdgCd);
+		log.info("ltnoBno = " + ltnoBno);
+		log.info("ltnoBuno = " + ltnoBuno);
+
+		Iterable<TbEhpr> it = null;
+
+                it = tbEhprRepository.selectEhprNative(
 				lwdgCd,
 				String.format("%4s", ltnoBno).replace(' ', '0'),
 				String.format("%4s", ltnoBuno).replace(' ', '0')
 		);
+
+		log.info("getEhpr() end...");
+
+		return it;
         }
 
 	@GetMapping(path="/ehpr2")
@@ -169,7 +180,18 @@ public class SiseController {
                         @RequestParam("bldgBno") String bldgBno,
                         @RequestParam("bldgBuno") String bldgBuno) {
 
-                return tbEhprRepository.selectEhprNative2(stnm, bldgBno, bldgBuno);
+		log.info("getEhpr2() start...");
+                log.info("stnm = " + stnm);
+                log.info("bldgBno = " + bldgBno);
+                log.info("bldgBuno = " + bldgBuno);
+
+                Iterable<TbEhpr> it = null;
+
+                it = tbEhprRepository.selectEhprNative2(stnm, bldgBno, bldgBuno);
+
+		log.info("getEhpr2() end...");
+
+		return it;
         }
 
 	@GetMapping(path="/error")
