@@ -33,5 +33,12 @@ public interface TbAddrRepository extends CrudRepository<TbAddr, String> {
         )
         Iterable<TbAddr> selectAddrNative3(@Param("lwdgCd") String lwdgCd, @Param("ltnoBno") String ltnoBno, @Param("ltnoBuno") String ltnoBuno);
 
+	@Query(
+                value = "select a.* from tb_addr a where a.stnm = :stnm and a.bldg_bno = :bldgBno and a.bldg_buno = :bldgBuno "
+                        + " and exists (select 1 from tb_map b where b.stnm_unon_cd = a.stnm_unon_cd) ",
+                nativeQuery = true
+        )
+        Iterable<TbAddr> selectAddrNative4(@Param("stnm") String stnm, @Param("bldgBno") String bldgBno, @Param("bldgBuno") String bldgBuno);
+
 }
 

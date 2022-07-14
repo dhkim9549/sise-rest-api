@@ -17,5 +17,19 @@ public interface TbEhprRepository extends CrudRepository<TbEhpr, Integer> {
         )
         Iterable<TbEhpr> selectEhprNative(@Param("lwdgCd") String lwdgCd, @Param("ltnoBno") String ltnoBno, @Param("ltnoBuno") String ltnoBuno);
 
+	@Query(
+                value = "select a.* "
+			+ "  from tb_ehpr a, "
+			+ "       tb_addr b "
+			+ " where a.lwdg_cd = b.lwdg_cd "
+			+ "   and a.ltno_bno = lpad(b.ltno_bno, 4, '0') "
+			+ "   and a.ltno_buno = lpad(b.ltno_buno, 4, '0') "
+			+ "   and b.stnm = :stnm "
+			+ "   and b.bldg_bno = :bldgBno "
+			+ "   and b.bldg_buno = :bldgBuno ",
+                nativeQuery = true
+        )
+        Iterable<TbEhpr> selectEhprNative2(@Param("stnm") String stnm, @Param("bldgBno") String bldgBno, @Param("bldgBuno") String bldgBuno);
+
 }
 

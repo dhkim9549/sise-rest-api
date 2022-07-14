@@ -81,6 +81,29 @@ public class SiseController {
 
         }
 
+	@GetMapping(path="/addr2")
+        public @ResponseBody Iterable<TbAddr> getAddr2(@RequestParam String stnm, @RequestParam String bldgBno, @RequestParam String bldgBuno) {
+
+                log.info("getAddr2() start...");
+                log.info("stnm = " + stnm);
+                log.info("bldgBno = " + bldgBno);
+		log.info("bldgBuno = " + bldgBuno);
+
+                stnm = stnm.replaceAll(" ", "");
+		if(bldgBuno.trim().equals("")) {
+			bldgBuno = "0";
+		}
+
+                Iterable<TbAddr> rsltIt = null;
+
+                rsltIt = tbAddrRepository.selectAddrNative4(stnm, bldgBno, bldgBuno);
+
+                log.info("getAddr2() end...");
+
+                return rsltIt;
+
+        }
+
 	@GetMapping(path="/addr3")
         public @ResponseBody Iterable<TbAddr> getAddr3(@RequestParam String lwdgCd, @RequestParam String ltnoBno, @RequestParam String ltnoBuno) {
 
@@ -138,6 +161,15 @@ public class SiseController {
 				String.format("%4s", ltnoBno).replace(' ', '0'),
 				String.format("%4s", ltnoBuno).replace(' ', '0')
 		);
+        }
+
+	@GetMapping(path="/ehpr2")
+        public @ResponseBody Iterable<TbEhpr> getEhpr2(
+                        @RequestParam("stnm") String stnm,
+                        @RequestParam("bldgBno") String bldgBno,
+                        @RequestParam("bldgBuno") String bldgBuno) {
+
+                return tbEhprRepository.selectEhprNative2(stnm, bldgBno, bldgBuno);
         }
 
 	@GetMapping(path="/error")
