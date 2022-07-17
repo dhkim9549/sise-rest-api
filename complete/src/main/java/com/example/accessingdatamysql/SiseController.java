@@ -150,6 +150,18 @@ public class SiseController {
                 return tbOlprRepository.selectOlprNative(twprcDnjiNo);
         }
 
+	@GetMapping(path="/olpr2")
+        public @ResponseBody Iterable<TbOlpr> getOlpr2(@RequestParam String twprcDnjiNo, @RequestParam String twprcDongNo){
+                // This returns a JSON or XML with the users
+                return tbOlprRepository.selectOlprNative2(twprcDnjiNo, twprcDongNo);
+        }
+
+	@GetMapping(path="/olprD")
+        public @ResponseBody Iterable<TbOlprD> getOlprD(@RequestParam String twprcDnjiNo){
+                // This returns a JSON or XML with the users
+                return tbOlprRepository.selectOlprNativeD(twprcDnjiNo);
+        }
+
 	@GetMapping(path="/ehpr")
         public @ResponseBody Iterable<TbEhpr> getEhpr(
 			@RequestParam("lwdgCd") String lwdgCd, 

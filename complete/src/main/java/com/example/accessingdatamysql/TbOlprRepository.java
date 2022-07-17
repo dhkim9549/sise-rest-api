@@ -17,5 +17,21 @@ public interface TbOlprRepository extends CrudRepository<TbOlpr, Integer> {
         )
         Iterable<TbOlpr> selectOlprNative(@Param("twprcDnjiNo") String twprcDnjiNo);
 
+	@Query(
+		value = "select * from tb_olpr where twprc_dnji_no = :twprcDnjiNo and twprc_dong_no = :twprcDongNo ",
+                nativeQuery = true
+        )
+        Iterable<TbOlpr> selectOlprNative2(@Param("twprcDnjiNo") String twprcDnjiNo, @Param("twprcDongNo") String twprcDongNo);
+
+	@Query(
+                value = ""
+			+ "select twprc_dong_no as twprcDongNo, max(dtl_bldg_nm) as dtlBldgNm "
+			+ "  from tb_olpr "
+			+ " where twprc_dnji_no = :twprcDnjiNo "
+			+ " group by twprc_dong_no ",
+                nativeQuery = true
+        )
+        Iterable<TbOlprD> selectOlprNativeD(@Param("twprcDnjiNo") String twprcDnjiNo);
+
 }
 
