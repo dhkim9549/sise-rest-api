@@ -25,7 +25,7 @@ public interface TbOlprRepository extends CrudRepository<TbOlpr, Integer> {
 
 	@Query(
                 value = ""
-			+ "select twprc_dong_no as twprcDongNo, max(dtl_bldg_nm) as dtlBldgNm "
+			+ "select twprc_dong_no as twprcDongNo, max(bldg_nm) as bldgNm, max(dtl_bldg_nm) as dtlBldgNm "
 			+ "  from tb_olpr "
 			+ " where twprc_dnji_no = :twprcDnjiNo "
 			+ " group by twprc_dong_no ",

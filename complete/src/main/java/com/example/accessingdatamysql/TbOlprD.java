@@ -10,5 +10,6 @@ public interface TbOlprD {
 
 	String getTwprcDongNo();
 	String getDtlBldgNm();
+	String getBldgNm();
 
 }
