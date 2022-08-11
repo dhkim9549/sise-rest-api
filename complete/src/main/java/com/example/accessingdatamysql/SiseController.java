@@ -228,4 +228,10 @@ public class SiseController {
 		}
                 return "" + local;
         }
+
+	@GetMapping(path="/logPrc")
+        public @ResponseBody String getLogPrc(@RequestParam String p){
+		log.error("logPrc = " + p);
+                return "{}";
+        }
 }
